@@ -1,0 +1,42 @@
+[
+  {
+    "userID": 1,
+    "firstName": "Angeline",
+    "lastName": "Karen",
+    "username": "angelinekaren",
+    "phoneNumber": "08127894321",
+    "emailAddress": "angelkar@gmail.com"
+  },
+  {
+    "userID": 2,
+    "firstName": "Vania",
+    "lastName": "Natalie",
+    "username": "vanianatalie",
+    "phoneNumber": "085798775433",
+    "emailAddress": "vanianat@gmail.com"
+  },
+  {
+    "userID": 3,
+    "firstName": "Edward",
+    "lastName": "Jefferson",
+    "username": "edwardjeff",
+    "phoneNumber": "083452278990",
+    "emailAddress": "edwardjeff@gmail.com"
+  },
+  {
+    "userID": 4,
+    "firstName": "Sieren",
+    "lastName": "Chelga",
+    "username": "sierrachelga",
+    "phoneNumber": "083455678993",
+    "emailAddress": "sierenchellz@gmail.com"
+  },
+  {
+    "userID": 5,
+    "firstName": "Shannon",
+    "lastName": "Halim",
+    "username": "shannonhalim",
+    "phoneNumber": "081276559833",
+    "emailAddress": "shanniehalim@gmail.com"
+  }
+]
