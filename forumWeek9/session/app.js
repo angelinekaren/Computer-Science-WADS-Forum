@@ -3,18 +3,12 @@ const app = express();
 
 // Session & Cookie Parser Middleware
 const session = require("express-session");
-const cookieParser = require("cookie-parser");
 
 // dateTime
-const FOUR_HOURS = 1000 * 60 * 60 * 4;
 const TEN_SECONDS = 1000 * 10;
 
 // process.env: global variable for runtime usage
-const {
-  PORT = 3000,
-  COOKIE_LIFETIME = FOUR_HOURS,
-  SESS_LIFETIME = TEN_SECONDS,
-} = process.env;
+const { PORT = 3000, SESS_LIFETIME = TEN_SECONDS } = process.env;
 
 // create a session middleware
 app.use(
@@ -27,9 +21,6 @@ app.use(
     },
   })
 );
-
-// use cookie parser middleware to parse cookies attached in client's request obj
-app.use(cookieParser("thisismycookiesecret"));
 
 // parse incoming request object as a JSON object
 app.use(express.json());
@@ -64,44 +55,8 @@ const users = [
 // variable to store a session
 var sess;
 
-// Main page
-app.get("/", (req, res) => {
-  res.send(`
-    <h1>Session & Cookies Demo</h1>
-    <a href="/welcome">Session</a>
-    <a href="/cookie">Cookie</a>
-  `);
-});
-
-// Cookie
-app.get("/cookie", (req, res) => {
-  if (req.cookies.isUser) {
-    res.send(`
-      <h1>Welcome again, ${req.cookies["isUser"]}!</h1>
-      <p>Cookie will expire in 4 hours or <a href="/deleteCookie">Delete cookie</a>
-      <a href="/">Go back to main</a>
-    `);
-    console.log(req.cookies);
-  }
-  // create cookie when user visit the website for the first time
-  else
-    res.cookie("isUser", "angeline", { maxAge: COOKIE_LIFETIME }).send(`
-        <h1>Cookies created! Welcome to your first time visit:)</h1>
-        <a href="/">Go back to main</a>
-        `);
-});
-
-app.get("/deleteCookie", (req, res) => {
-  // delete cookie
-  res.clearCookie("isUser");
-  res.send(`
-    <h1>Cookie is deleted</h1>
-    <a href="/">Go back to main</a>
-  `);
-});
-
 // Session
-app.get("/welcome", (req, res) => {
+app.get("/", (req, res) => {
   const { userId } = req.session;
   // find user in the users array
   const user = users.find((user) => user.email === userId);
@@ -137,7 +92,7 @@ app.post("/login", (req, res) => {
 
       res.send(`
             <h1>Hello, ${user.name}!</h1>
-            <a href="/welcome">Go to welcome page</a>
+            <a href="/">Go back</a>
             <a href="/logout">Log out</a>
         `);
     } else {
@@ -151,7 +106,7 @@ app.get("/logout", (req, res) => {
     if (err) {
       return console.log(err);
     }
-    res.redirect("/welcome");
+    res.redirect("/");
   });
 });
 

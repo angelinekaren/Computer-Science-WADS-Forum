@@ -32,12 +32,6 @@ body {
   border-radius: 10px;
 }
 
-.card-login a {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 2rem;
-}
-
 .input-container {
   display: flex;
   width: 100%;
